@@ -1,0 +1,115 @@
+.hero {
+  background-image: url('https://i0.wp.com/tatermash.com/wp-content/uploads/2015/04/TeacherBG.jpg?ssl=1');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Add margin to the top of the registration form */
+.mt-4 {
+  margin-top: 2rem;
+}
+
+/* Style the navbar */
+.navbar {
+  background-image: linear-gradient(180deg, #D90A2C 0%, #730000 100%);
+  color: #fff;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+/* Center the navbar links */
+.navbar-nav {
+  justify-content: flex-end;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 10px;
+}
+
+/* Make the contact link stand out */
+.navbar-nav .nav-item:last-child {
+  font-weight: bold;
+}
+
+/* Style the registration form */
+#registrationForm {
+  background-color: #000; /* Form background color */
+  border: 4px solid #730000; /* Form border color */
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: #fff;
+}
+
+/* Style the registration form inputs */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Style the submit button */
+.btn-primary {
+  width: 100%;
+  background-color: #730000;
+  border-color: #000;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #730000;
+  border: #730000 4px;
+}
+
+/* Style the registration cards */
+.card {
+  width: 250px; /* Adjust the horizontal size of the card */
+  background-color: #730000;
+  border: none;
+  color: #fff; /* Text color for card content */
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.view-more-button {
+  background-color: #911717; /* Complement color for the button */
+  border-color: #911717;
+}
+
+.view-more-button:not(:disabled) {
+  background-color: #fff;
+  color: #730000;
+  border: #fff 2px;
+  margin-bottom: 20px;
+}
+
+.additional-details {
+  background-color: #000; /* Complement color for the additional details */
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.additional-details .card-text {
+  color: #fff; /* Text color for additional details */
+}
+
+.additional-details.collapse {
+  display: none;
+}
+
+.viewbtn {
+  background-color: #000;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Registration Form</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="hero">
+  <nav class="navbar">
+    <span class="navbar-brand mb-0 h1">Course Registration</span>
+  </nav>
+  <div class="container mt-4">
+    <h2 style="color: #fff; text-align: center;">Student Details</h2>
+    <form id="registrationForm" class="studentform" action="/addStudent" method="POST">
+      <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="courseName">Course Name</label>
+        <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Enter course name">
+      </div>
+      <div class="form-group">
+        <label for="grade">Grade</label>
+        <input type="text" class="form-control" id="grade" name="grade" placeholder="Enter grade">
+      </div>
+      <div class="form-group">
+        <label for="score">Score</label>
+        <input type="number" class="form-control" id="score" name="score" placeholder="Enter score">
+      </div>
+      <div class="form-group">
+        <label for="link">Link</label>
+        <input type="url" class="form-control" id="link" name="link" placeholder="Enter link">
+      </div>
+      <div class="form-group">
+        <label for="file">Attach File</label>
+        <input type="file" class="form-control-file" id="file">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h2 style="color: #fff; text-align: center;">List of Students</h2>
+    <div id="registrationCards" class="mt-4">
+      <% students.forEach(student => { %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= student.name %></h5>
+            <p class="card-text">Course: <%= student.courseName %></p>
+            <p class="card-text">Grade: <%= student.grade %></p>
+            <p class="card-text">Score: <%= student.score %></p>
+            <p class="card-text">Link: <%= student.link %></p>
+            <div class="row">
+              <div class="col">
+                <form action="/deleteStudent" method="post">
+                  <input type="hidden" name="id" value="<%= student._id %>">
+                  <button type="submit" class="btn btn-primary">Delete</button>
+                </form>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= student._id %>">Update</button>
+              </div>
+            </div>
+            <div class="modal fade" id="editModal<%= student._id %>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Student Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="editForm<%= student._id %>" action="/editStudent/<%= student._id %>" method="POST">
+                      <div class="form-group">
+                        <label for="editStudentName<%= student._id %>">Student Name</label>
+                        <input type="text" class="form-control" id="editStudentName<%= student._id %>" name="studentName" value="<%= student.name %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="editCourseName<%= student._id %>">Course Name</label>
+                        <input type="text" class="form-control" id="editCourseName<%= student._id %>" name="courseName" value="<%= student.courseName %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="editGrade<%= student._id %>">Grade</label>
+                        <input type="text" class="form-control" id="editGrade<%= student._id %>" name="grade" value="<%= student.grade %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="editScore<%= student._id %>">Score</label>
+                        <input type="number" class="form-control" id="editScore<%= student._id %>" name="score" value="<%= student.score %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="editLink<%= student._id %>">Link</label>
+                        <input type="url" class="form-control" id="editLink<%= student._id %>" name="link" value="<%= student.link %>">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
